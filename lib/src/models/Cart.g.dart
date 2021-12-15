@@ -1,34 +1,34 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+// // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Cart.dart';
+// part of 'Cart.dart';
 
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
+// // **************************************************************************
+// // JsonSerializableGenerator
+// // **************************************************************************
 
-/// Classe helper de serialização JSON
-Cart _$CartFromJson(Map<String, dynamic> json) {
-  return Cart(
-    isGift: json['IsGift'] as bool?,
-    returnsAccepted: json['ReturnsAccepted'] as bool?,
-    items: (json['Items'] as List<dynamic>?)
-        ?.map((e) => Items.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
+// /// Classe helper de serialização JSON
+// Cart _$CartFromJson(Map<String, dynamic> json) {
+//   return Cart(
+//     isGift: json['IsGift'] as bool?,
+//     returnsAccepted: json['ReturnsAccepted'] as bool?,
+//     items: (json['Items'] as List<dynamic>?)
+//         ?.map((e) => Items.fromJson(e as Map<String, dynamic>))
+//         .toList(),
+//   );
+// }
 
-/// Classe helper de serialização JSON
-Map<String, dynamic> _$CartToJson(Cart instance) {
-  final val = <String, dynamic>{};
+// /// Classe helper de serialização JSON
+// Map<String, dynamic> _$CartToJson(Cart instance) {
+//   final val = <String, dynamic>{};
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
+//   void writeNotNull(String key, dynamic value) {
+//     if (value != null) {
+//       val[key] = value;
+//     }
+//   }
 
-  writeNotNull('IsGift', instance.isGift);
-  writeNotNull('ReturnsAccepted', instance.returnsAccepted);
-  writeNotNull('Items', instance.items);
-  return val;
-}
+//   writeNotNull('IsGift', instance.isGift);
+//   writeNotNull('ReturnsAccepted', instance.returnsAccepted);
+//   writeNotNull('Items', instance.items);
+//   return val;
+// }

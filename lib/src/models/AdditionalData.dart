@@ -1,5 +1,3 @@
-part 'AdditionalData.g.dart';
-
 /// Classe Additional Data da documentação oficial Cielo Ecommerce
 class AdditionalData {
   String? signature;
@@ -8,8 +6,20 @@ class AdditionalData {
     this.signature,
   });
 
-  factory AdditionalData.fromJson(Map<String, dynamic> json) =>
-      _$AdditionalDataFromJson(json);
+  Map<String, dynamic> toMap() {
+    return {
+      'Signature': signature,
+    };
+  }
 
-  Map<String, dynamic> toJson() => _$AdditionalDataToJson(this);
+  factory AdditionalData.fromMap(Map<String, dynamic> map) {
+    return AdditionalData(
+      signature: map['Signature'],
+    );
+  }
+
+  // String toJson() => json.encode(toMap());
+
+  // factory AdditionalData.fromJson(String source) =>
+  //     AdditionalData.fromMap(json.decode(source));
 }

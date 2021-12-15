@@ -12,16 +12,20 @@ class CieloEcommerce {
   CieloEcommerce({this.environment, this.merchant}) {
     dio = Dio(BaseOptions(headers: {
       "MerchantId": this.merchant!.merchantId,
-      "MerchantKey": this.merchant!.merchantKey
+      "MerchantKey": this.merchant!.merchantKey,
+      "Content-Type": "application/json",
     }));
   }
 
   ///Criando uma transação de compra
   Future<Sale?> createSale(Sale sale) async {
+    print('REQUEST:');
     try {
       Response response = await dio.post("${environment!.apiUrl}/1/sales/",
           data: sale.toJson());
 
+      print('RESPONSE:' + response.data.toString());
+      print('----------------------------------------');
       return Sale.fromJson(response.data);
     } on DioError catch (e) {
       _getErrorDio(e);
@@ -79,7 +83,7 @@ class CieloEcommerce {
   Future<CreditCard?> tokenizeCard(CreditCard card) async {
     try {
       Response response =
-          await dio.post("${environment!.apiUrl}/1/card/", data: card.toJson());
+          await dio.post("${environment!.apiUrl}/1/card/", data: card.toMap());
       card.cardToken = response.data["CardToken"];
       card.cardNumber =
           "****" + card.cardNumber!.substring(card.cardNumber!.length - 4);

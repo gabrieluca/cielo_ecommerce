@@ -1,13 +1,27 @@
-part 'Legs.g.dart';
-
-/// Classe Legs da documentação oficial Cielo Ecommerce
 class Legs {
   String? destination;
   String? origin;
 
-  Legs({this.destination, this.origin});
+  Legs({
+    this.destination,
+    this.origin,
+  });
 
-  factory Legs.fromJson(Map<String, dynamic> json) => _$LegsFromJson(json);
+  Map<String, dynamic> toMap() {
+    return {
+      'Destination': destination,
+      'Origin': origin,
+    };
+  }
 
-  Map<String, dynamic> toJson() => _$LegsToJson(this);
+  factory Legs.fromMap(Map<String, dynamic> map) {
+    return Legs(
+      destination: map['Destination'],
+      origin: map['Origin'],
+    );
+  }
+
+  // String toJson() => json.encode(toMap());
+
+  // factory Legs.fromJson(String source) => Legs.fromMap(json.decode(source));
 }

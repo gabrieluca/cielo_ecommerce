@@ -1,4 +1,4 @@
-part 'Address.g.dart';
+// part 'Address.g.dart';
 
 /// Classe Address da documentação oficial Cielo Ecommerce
 class Address {
@@ -11,18 +11,45 @@ class Address {
   String? country;
   String? district;
 
-  Address(
-      {this.street,
-      this.number,
-      this.complement,
-      this.zipCode,
-      this.city,
-      this.state,
-      this.country,
-      this.district});
+  Address({
+    this.street,
+    this.number,
+    this.complement,
+    this.zipCode,
+    this.city,
+    this.state,
+    this.country,
+    this.district,
+  });
 
-  factory Address.fromJson(Map<String, dynamic> json) =>
-      _$AddressFromJson(json);
+  Map<String, dynamic> toMap() {
+    return {
+      'Street': street,
+      'Number': number,
+      'Complement': complement,
+      'ZipCode': zipCode,
+      'City': city,
+      'State': state,
+      'Country': country,
+      'District': district,
+    };
+  }
 
-  Map<String, dynamic> toJson() => _$AddressToJson(this);
+  factory Address.fromMap(Map<String, dynamic> map) {
+    return Address(
+      street: map['Street'],
+      number: map['Number'],
+      complement: map['Complement'],
+      zipCode: map['ZipCode'],
+      city: map['City'],
+      state: map['State'],
+      country: map['Country'],
+      district: map['District'],
+    );
+  }
+
+  // String toJson() => json.encode(toMap());
+
+  // factory Address.fromJson(String source) =>
+  //     Address.fromMap(json.decode(source));
 }

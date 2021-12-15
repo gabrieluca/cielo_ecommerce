@@ -1,5 +1,3 @@
-part 'Link.g.dart';
-
 /// Classe Link da documentação oficial Cielo Ecommerce
 class Link {
   String? method;
@@ -12,7 +10,23 @@ class Link {
     this.href,
   });
 
-  factory Link.fromJson(Map<String, dynamic> json) => _$LinkFromJson(json);
+  Map<String, dynamic> toMap() {
+    return {
+      'Method': method,
+      'Rel': rel,
+      'Href': href,
+    };
+  }
 
-  Map<String, dynamic> toJson() => _$LinkToJson(this);
+  factory Link.fromMap(Map<String, dynamic> map) {
+    return Link(
+      method: map['Method'],
+      rel: map['Rel'],
+      href: map['Href'],
+    );
+  }
+
+  // String toJson() => json.encode(toMap());
+
+  // factory Link.fromJson(String source) => Link.fromMap(json.decode(source));
 }

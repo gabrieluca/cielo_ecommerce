@@ -1,4 +1,4 @@
-part 'ReplyData.g.dart';
+// part 'ReplyData.g.dart';
 
 /// Classe Reply Data da documentação oficial Cielo Ecommerce
 class ReplyData {
@@ -16,23 +16,59 @@ class ReplyData {
   String? providerTransactionId;
   String? velocityInfoCode;
 
-  ReplyData(
-      {this.addressInfoCode,
-      this.factorCode,
-      this.score,
-      this.binCountry,
-      this.cardIssuer,
-      this.cardScheme,
-      this.hostSeverity,
-      this.internetInfoCode,
-      this.ipRoutingMethod,
-      this.scoreModelUsed,
-      this.casePriority,
-      this.providerTransactionId,
-      this.velocityInfoCode});
+  ReplyData({
+    this.addressInfoCode,
+    this.factorCode,
+    this.score,
+    this.binCountry,
+    this.cardIssuer,
+    this.cardScheme,
+    this.hostSeverity,
+    this.internetInfoCode,
+    this.ipRoutingMethod,
+    this.scoreModelUsed,
+    this.casePriority,
+    this.providerTransactionId,
+    this.velocityInfoCode,
+  });
 
-  factory ReplyData.fromJson(Map<String, dynamic> json) =>
-      _$ReplyDataFromJson(json);
+  Map<String, dynamic> toMap() {
+    return {
+      'AddressInfoCode': addressInfoCode,
+      'FactorCode': factorCode,
+      'Score': score,
+      'BinCountry': binCountry,
+      'CardIssuer': cardIssuer,
+      'CardScheme': cardScheme,
+      'HostSeverity': hostSeverity,
+      'InternetInfoCode': internetInfoCode,
+      'IpRoutingMethod': ipRoutingMethod,
+      'ScoreModelUsed': scoreModelUsed,
+      'CasePriority': casePriority,
+      'ProviderTransactionId': providerTransactionId,
+      'VelocityInfoCode': velocityInfoCode,
+    };
+  }
 
-  Map<String, dynamic> toJson() => _$ReplyDataToJson(this);
+  factory ReplyData.fromMap(Map<String, dynamic> map) {
+    return ReplyData(
+      addressInfoCode: map['AddressInfoCode'],
+      factorCode: map['FactorCode'],
+      score: map['Score']?.toInt(),
+      binCountry: map['BinCountry'],
+      cardIssuer: map['CardIssuer'],
+      cardScheme: map['CardScheme'],
+      hostSeverity: map['HostSeverity']?.toInt(),
+      internetInfoCode: map['InternetInfoCode'],
+      ipRoutingMethod: map['IpRoutingMethod'],
+      scoreModelUsed: map['ScoreModelUsed'],
+      casePriority: map['CasePriority']?.toInt(),
+      providerTransactionId: map['ProviderTransactionId'],
+      velocityInfoCode: map['VelocityInfoCode'],
+    );
+  }
+
+  // String toJson() => json.encode(toMap());
+
+  // factory ReplyData.fromJson(String source) => ReplyData.fromMap(json.decode(source));
 }

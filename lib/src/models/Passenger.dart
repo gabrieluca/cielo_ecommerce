@@ -1,5 +1,3 @@
-part 'Passenger.g.dart';
-
 /// Classe Passenger da documentação oficial Cielo Ecommerce
 class Passenger {
   String? name;
@@ -10,17 +8,37 @@ class Passenger {
   String? phone;
   String? passengerType;
 
-  Passenger(
-      {this.name,
-      this.identity,
-      this.status,
-      this.rating,
-      this.email,
-      this.phone,
-      this.passengerType});
+  Passenger({
+    this.name,
+    this.identity,
+    this.status,
+    this.rating,
+    this.email,
+    this.phone,
+    this.passengerType,
+  });
 
-  factory Passenger.fromJson(Map<String, dynamic> json) =>
-      _$PassengerFromJson(json);
+  Map<String, dynamic> toMap() {
+    return {
+      'Name': name,
+      'Identity': identity,
+      'Status': status,
+      'Rating': rating,
+      'Email': email,
+      'Phone': phone,
+      'PassengerType': passengerType,
+    };
+  }
 
-  Map<String, dynamic> toJson() => _$PassengerToJson(this);
+  factory Passenger.fromMap(Map<String, dynamic> map) {
+    return Passenger(
+      name: map['Name'],
+      identity: map['Identity'],
+      status: map['Status'],
+      rating: map['Rating'],
+      email: map['Email'],
+      phone: map['Phone'],
+      passengerType: map['PassengerType'],
+    );
+  }
 }

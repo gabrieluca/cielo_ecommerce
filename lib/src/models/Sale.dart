@@ -1,6 +1,6 @@
 import 'models.dart';
 
-part 'Sale.g.dart';
+// part 'Sale.g.dart';
 
 /// Classe Sale da documentação oficial Cielo Ecommerce
 class Sale {
@@ -17,7 +17,24 @@ class Sale {
     if (this.payment == null) this.payment = Payment();
   }
 
-  factory Sale.fromJson(Map<String, dynamic> json) => _$SaleFromJson(json);
+  Map<String, dynamic> toJson() {
+    return {
+      'MerchantOrderId': merchantOrderId,
+      'Customer': customer?.toMap(),
+      'Payment': payment?.toMap(),
+    };
+  }
 
-  Map<String, dynamic> toJson() => _$SaleToJson(this);
+  factory Sale.fromJson(Map<String, dynamic> map) {
+    return Sale(
+      merchantOrderId: map['MerchantOrderId'],
+      customer:
+          map['Customer'] != null ? Customer.fromMap(map['Customer']) : null,
+      payment: map['Payment'] != null ? Payment.fromMap(map['Payment']) : null,
+    );
+  }
+
+  // String toJson() => json.encode(toMap());
+
+  // factory Sale.fromJson(String source) => Sale.fromMap(json.decode(source));
 }
