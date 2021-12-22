@@ -19,7 +19,7 @@ class Payment {
   String? provider;
   FraudAnalysis? fraudAnalysis;
   bool? isQrCode;
-  int? amount;
+  double? amount;
   String? receivedDate;
   int? status;
   bool? isSplitted;
