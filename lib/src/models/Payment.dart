@@ -155,7 +155,7 @@ class Payment {
       provider: map['Provider'],
       // fraudAnalysis: map['fraudAnalysis'] != null ? FraudAnalysis.fromMap(map['fraudAnalysis']) : null,
       isQrCode: map['IsQrCode'],
-      amount: map['Amount']?.toInt(),
+      amount: map['Amount']?.toDouble(),
       receivedDate: map['ReceivedDate'],
       status: map['Status']?.toInt(),
       isSplitted: map['IsSplitted'],

@@ -84,6 +84,9 @@ class CieloEcommerce {
     try {
       Response response =
           await dio.post("${environment!.apiUrl}/1/card/", data: card.toMap());
+      //TODO Fix error handling
+      print('RESPONSE:' + response.data.toString());
+      print('----------------------------------------');
       card.cardToken = response.data["CardToken"];
       card.cardNumber =
           "****" + card.cardNumber!.substring(card.cardNumber!.length - 4);
