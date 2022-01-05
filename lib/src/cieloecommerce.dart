@@ -19,10 +19,12 @@ class CieloEcommerce {
 
   ///Criando uma transação de compra
   Future<Sale?> createSale(Sale sale) async {
-    print('REQUEST:');
+    print('REQUEST: ${sale.toJson()}');
     try {
-      Response response = await dio.post("${environment!.apiUrl}/1/sales/",
-          data: sale.toJson());
+      Response response = await dio.post(
+        "${environment!.apiUrl}/1/sales/",
+        data: sale.toJson(),
+      );
 
       print('RESPONSE:' + response.data.toString());
       print('----------------------------------------');
@@ -82,15 +84,16 @@ class CieloEcommerce {
   ///Função para Tokenizar um Cartão
   Future<CreditCard?> tokenizeCard(CreditCard card) async {
     try {
+      CreditCard creditCard = CreditCard();
       Response response =
           await dio.post("${environment!.apiUrl}/1/card/", data: card.toMap());
       //TODO Fix error handling
       print('RESPONSE:' + response.data.toString());
       print('----------------------------------------');
-      card.cardToken = response.data["CardToken"];
-      card.cardNumber =
+      creditCard.cardToken = response.data["CardToken"];
+      creditCard.cardNumber =
           "****" + card.cardNumber!.substring(card.cardNumber!.length - 4);
-      return card;
+      return creditCard;
     } on DioError catch (e) {
       _getErrorDio(e);
     } on CieloException catch (e) {
